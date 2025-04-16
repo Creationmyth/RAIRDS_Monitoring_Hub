@@ -136,3 +136,26 @@ footer {
 .login-form button:hover {
     background-color: #ff9966;
 }
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: #fff3e0;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(255, 140, 0, 0.2);
+    text-decoration: none;
+    color: #333;
+    width: 250px;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    background-color: #ffe0b2;
+}
