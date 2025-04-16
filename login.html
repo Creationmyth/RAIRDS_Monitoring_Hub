@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li class="login-button"><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h2>Login to Your Account</h2>
+        <form action="#" method="POST" class="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required />
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+
+            <button type="submit">Login</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Your Website. All rights reserved.</p>
+</footer>
+
+<script>
+    // OPTIONAL: Handle fake login & redirect
+    document.querySelector(".login-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        // Example placeholder login check
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if (username && password) {
+            // Redirect to a user dashboard or data page
+            window.location.href = "data-graphs.html";
+        } else {
+            alert("Please enter valid credentials.");
+        }
+    });
+</script>
+</body>
+</html>
