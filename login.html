@@ -40,18 +40,19 @@
 <script>
     document.querySelector(".login-form").addEventListener("submit", function (e) {
         e.preventDefault();
-        const username = document.getElementById("username").value;
+        const username = document.getElementById("username").value.trim();
         const password = document.getElementById("password").value;
 
-        // Simulate successful login
         if (username && password) {
             localStorage.setItem("isLoggedIn", "true");
-            window.location.href = "data-graphs.html";
+            localStorage.setItem("username", username);
+            window.location.href = "dashboard.html";
         } else {
-            alert("Invalid credentials");
+            alert("Please fill in both fields.");
         }
     });
 </script>
+
 
 </body>
 </html>
