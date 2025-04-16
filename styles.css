@@ -9,56 +9,64 @@ body {
     font-family: Arial, sans-serif;
     background-color: #fff5e6; /* light warm background */
     color: #333;
-    display: flex;
-    flex-direction: column;
+    padding-top: 70px; /* Prevent content hiding behind fixed nav */
     min-height: 100vh;
 }
 
-/* Nav Bar */
+/* Navbar */
 .navbar {
-    background-color: #ff7f50; /* coral (warm) */
-    padding: 1rem;
+    background-color: #ff7f50; /* coral */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: top 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    padding: 1rem 2rem;
 }
 
 .nav-links li {
     margin-right: 1.5rem;
+    transition: transform 0.3s ease;
 }
 
 .nav-links li a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
-    padding: 0.5rem;
-    transition: background 0.3s;
+    padding: 0.5rem 0.75rem;
+    transition: transform 0.3s ease, background 0.3s;
+    display: inline-block;
+    border-radius: 5px;
 }
 
 .nav-links li a:hover {
-    background-color: #ffb07c; /* lighter warm tone */
-    border-radius: 5px;
+    background-color: #ffb07c;
+    transform: scale(1.1);
 }
 
 .login-button {
     margin-left: auto;
 }
 
-/* Main Section */
+/* Main */
 main {
-    flex: 1;
     padding: 2rem;
 }
 
 /* Footer */
 footer {
-    background-color: #ffdab9; /* peach puff */
+    background-color: #ffdab9;
     text-align: center;
     padding: 1rem;
     color: #444;
     font-size: 0.9rem;
+    margin-top: auto;
 }
