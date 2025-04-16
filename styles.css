@@ -1,3 +1,26 @@
+/* Responsive Viewport */
+@media screen and (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .login-form {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+}
+
 /* General Reset */
 * {
     margin: 0;
