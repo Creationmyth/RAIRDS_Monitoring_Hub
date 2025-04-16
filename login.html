@@ -36,21 +36,22 @@
     <p>&copy; 2025 Your Website. All rights reserved.</p>
 </footer>
 
+<script src="auth.js"></script>
 <script>
-    // OPTIONAL: Handle fake login & redirect
     document.querySelector(".login-form").addEventListener("submit", function (e) {
         e.preventDefault();
-        // Example placeholder login check
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
 
+        // Simulate successful login
         if (username && password) {
-            // Redirect to a user dashboard or data page
+            localStorage.setItem("isLoggedIn", "true");
             window.location.href = "data-graphs.html";
         } else {
-            alert("Please enter valid credentials.");
+            alert("Invalid credentials");
         }
     });
 </script>
+
 </body>
 </html>
