@@ -9,26 +9,48 @@ function getUsername() {
 }
 
 function updateNavBar() {
-    const loginBtn = document.querySelector(".login-button a");
-    const userGreeting = document.querySelector(".user-greeting");
+    const navLinks = document.querySelector(".nav-links");
+
+    // Clear current nav links
+    navLinks.innerHTML = "";
+
+    // Always show Home and About
+    navLinks.innerHTML += `
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#">About</a></li>
+  `;
 
     if (isLoggedIn()) {
-        loginBtn.textContent = "Logout";
-        loginBtn.href = "#";
-        loginBtn.onclick = function () {
-            localStorage.clear();
-            window.location.href = "index.html";
-        };
+        // Show Dashboard if logged in
+        navLinks.innerHTML += `
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li class="login-button"><a href="#">Logout</a></li>
+    `;
 
-        if (userGreeting) {
-            userGreeting.textContent = `Hi, ${getUsername()}!`;
-        }
+        const logoutBtn = navLinks.querySelector(".login-button a");
+        logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.clear();
+            firebase.auth().signOut().then(() => {
+                window.location.href = "index.html";
+            });
+        });
     } else {
-        loginBtn.textContent = "Login";
-        loginBtn.href = "login.html";
-        if (userGreeting) userGreeting.textContent = "";
+        // Show Login if not logged in
+        navLinks.innerHTML += `
+      <li class="login-button"><a href="login.html">Login</a></li>
+    `;
+    }
+
+    // Optional: Update greeting if it exists
+    const userGreeting = document.querySelector(".user-greeting");
+    if (userGreeting && isLoggedIn()) {
+        userGreeting.textContent = `Hi, ${getUsername()}!`;
+    } else if (userGreeting) {
+        userGreeting.textContent = "";
     }
 }
+
 
 function requireLogin() {
     if (!isLoggedIn()) {
