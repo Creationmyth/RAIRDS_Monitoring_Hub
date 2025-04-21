@@ -159,3 +159,18 @@ footer {
     transform: scale(1.05);
     background-color: #ffe0b2;
 }
+.watch-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #ff7f50;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.watch-btn:hover {
+    background-color: #ff9966;
+}
