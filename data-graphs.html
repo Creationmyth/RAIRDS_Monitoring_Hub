@@ -34,6 +34,21 @@
 <script src="auth.js"></script>
 <script>
     updateNavBar();
+    // Initialize Graph
+    const graph = createGraph();
+    // Add nodes
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+    graph.addNode("D");
+    graph.addNode("E");
+    // Add edges
+    graph.addEdge("A", "C");
+    graph.addEdge("A", "B");
+    graph.addDirectedEdge("A", "D");
+    graph.addEdge("D", "E");
+    // Show the graph
+    graph.display();
 </script>
 
 </body>
