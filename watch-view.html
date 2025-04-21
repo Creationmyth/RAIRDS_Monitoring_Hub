@@ -76,7 +76,39 @@
         <p>Fatigue Risk: <strong>Low</strong></p>
         <p>Alertness Score: <strong>85%</strong></p>
     </div>
-    <a href="#" class="watch-link">📡 Active Measurement</a>
+    <div class="data-graphs">
+        <div class="mini-graph">
+            <canvas id="pvwWatchChart" width="200" height="100"></canvas>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const watchCtx = document.getElementById('pvwWatchChart').getContext('2d');
+        new Chart(watchCtx, {
+            type: 'line',
+            data: {
+                labels: ['00', '01', '02', '03', '04', '05'],
+                datasets: [{
+                    label: 'PVW',
+                    data: [12, 15, 14, 18, 17, 20],
+                    borderColor: '#ffab91',
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    fill: false,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                plugins: { legend: { display: false } },
+                responsive: true,
+                scales: {
+                    x: { display: false },
+                    y: { display: false }
+                }
+            }
+        });
+    </script>
 
 
     <a href="index.html" class="watch-link">🏠 Home</a>
