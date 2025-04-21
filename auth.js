@@ -59,3 +59,17 @@ function requireLogin() {
 }
 
 window.addEventListener("DOMContentLoaded", updateNavBar);
+document.addEventListener("DOMContentLoaded", () => {
+    updateNavBar();
+
+    // Safely bind logout button
+    document.body.addEventListener("click", function (e) {
+        if (e.target.closest(".login-button a") && e.target.textContent === "Logout") {
+            e.preventDefault();
+            localStorage.clear();
+            firebase.auth().signOut().then(() => {
+                window.location.href = "index.html";
+            });
+        }
+    });
+});
