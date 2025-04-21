@@ -52,6 +52,17 @@
     // Show the graph
     graph.display();
 </script>
+<script>
+    // Detect watch mode via URL parameter
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("watch") === "true") {
+        document.body.classList.add("watch-mode");
+        const nav = document.querySelector(".navbar");
+        const footer = document.querySelector("footer");
+        if (nav) nav.style.display = "none";
+        if (footer) footer.style.display = "none";
+    }
+</script>
 
 </body>
 </html>

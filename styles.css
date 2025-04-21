@@ -174,3 +174,39 @@ footer {
 .watch-btn:hover {
     background-color: #ff9966;
 }
+/* WATCH MODE STYLING */
+body.watch-mode {
+    background-color: #121212;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 1rem;
+}
+
+body.watch-mode main {
+    padding: 0.5rem;
+}
+
+body.watch-mode h2,
+body.watch-mode h3 {
+    color: #ffcc80;
+    text-align: center;
+}
+
+body.watch-mode a,
+body.watch-mode button {
+    font-size: 1.1rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    background-color: #ff7f50;
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 1rem auto;
+    width: 90%;
+    text-align: center;
+}
+
+body.watch-mode a:hover,
+body.watch-mode button:hover {
+    background-color: #ff9966;
+}
