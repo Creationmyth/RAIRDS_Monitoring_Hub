@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Sign out via Firebase
             firebase.auth().signOut().then(() => {
                 localStorage.clear(); // Clear any custom local storage
-                window.location.href = "index.html"; // Redirect to homepage
+                window.location.href = "login.html"; // Redirect to homepage
             }).catch((error) => {
                 console.error("Logout error:", error);
             });
