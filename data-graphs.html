@@ -23,6 +23,40 @@
     <h2>Data Graphs</h2>
     <p class="user-greeting"></p>
     <p>Welcome to your data dashboard. Graphs will appear here.</p>
+    <section class="graph-section">
+        <h2>PVW vs Time</h2>
+        <canvas id="pvwChart" width="600" height="300"></canvas>
+    </section>
+    <script src="http_cdn.jsdelivr.net_npm_chart.js"></script>
+    <script>
+        const ctx = document.getElementById('pvwChart').getContext('2d');
+        const pvwChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00'], // Sample time data
+                datasets: [{
+                    label: 'PVW',
+                    data: [12, 15, 14, 18, 17, 20],
+                    borderColor: '#ff8a65',
+                    backgroundColor: 'rgba(255, 138, 101, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Time' }
+                    },
+                    y: {
+                        title: { display: true, text: 'PVW' }
+                    }
+                }
+            }
+        });
+    </script>
+
 </main>
 
 <footer>
@@ -39,21 +73,6 @@
 <script src="auth.js"></script>
 <script>
     updateNavBar();
-    // Initialize Graph
-    const graph = createGraph();
-    // Add nodes
-    graph.addNode("A");
-    graph.addNode("B");
-    graph.addNode("C");
-    graph.addNode("D");
-    graph.addNode("E");
-    // Add edges
-    graph.addEdge("A", "C");
-    graph.addEdge("A", "B");
-    graph.addDirectedEdge("A", "D");
-    graph.addEdge("D", "E");
-    // Show the graph
-    graph.display();
 </script>
 <script>
     // Detect watch mode via URL parameter
