@@ -58,17 +58,22 @@ function requireLogin() {
     }
 }
 
-window.addEventListener("DOMContentLoaded", updateNavBar);
 document.addEventListener("DOMContentLoaded", () => {
     updateNavBar();
 
-    // Safely bind logout button
-    document.body.addEventListener("click", function (e) {
-        if (e.target.closest(".login-button a") && e.target.textContent === "Logout") {
+    // Event delegation to handle logout clicks even when navbar is dynamic
+    document.addEventListener("click", function (e) {
+        const target = e.target.closest(".login-button a");
+
+        if (target && target.textContent.trim() === "Logout") {
             e.preventDefault();
-            localStorage.clear();
+
+            // Sign out via Firebase
             firebase.auth().signOut().then(() => {
-                window.location.href = "index.html";
+                localStorage.clear(); // Clear any custom local storage
+                window.location.href = "index.html"; // Redirect to homepage
+            }).catch((error) => {
+                console.error("Logout error:", error);
             });
         }
     });
