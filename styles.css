@@ -38,7 +38,7 @@ body {
 
 /* Navbar */
 .navbar {
-    background-color: #ff7f50; /* coral */
+    background-color: #fffff; /* black */
     position: fixed;
     top: 0;
     width: 100%;
@@ -86,7 +86,7 @@ main {
 
 /* Footer */
 footer {
-    background-color: #ffdab9;
+    background-color: #ffff00;
     text-align: center;
     padding: 1rem;
     color: #444;
