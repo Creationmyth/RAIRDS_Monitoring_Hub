@@ -38,8 +38,40 @@
 <main>
     <section>
         <h1>About Us</h1>
-        <p>We are a team of 6 people looking to help people with RAIRDS difficulties and raise awareness about autoimmune diseases, whilst also helping to allieviate the impact these diseases causes in people's life.</p>
+        <p>We are a team of 6 people looking to help people with RAIRDS difficulties and raise awareness about autoimmune diseases, whilst also helping to alleviate the impact these diseases causes in people's life.</p>
     </section>
+    <section>
+        <h1>How are the calculations done?</h1>
+
+        <p>
+            Calculations required to calculate Pulse Wave Velocity (PWV):<br>
+            d = Artery length will need to be measured beforehand (personalisation)<br>
+            PWV = d / Pulse Transit Time (PTT)
+        </p>
+
+        <p>
+            Initial PTT = Time from PPG - Time from ECG<br>
+            Final PTT = Initial PTT * (1 + C) * f
+        </p>
+
+        <p>
+            Some wearables directly give PTT unless they use purely ECG and PPG.<br>
+            Our calculations factor in movement and posture, so our results are more accurate.
+        </p>
+
+        <p>
+            We also use machine learning models to further refine final PTT – to reduce errors from physical activities or environmental factors affecting PWV.
+        </p>
+
+        <p>
+            (On average but varies between individuals):<br>
+            If x is the patient’s PWV:<br>
+            x &lt; 10 m/s - healthy range<br>
+            10 m/s &lt; x &lt; 12 m/s - borderline – patient must be alerted<br>
+            x &gt; 12 m/s - the disease is actively impacting the blood vessels OR there is an error with calculations (e.g., patient is exercising) – patient must be alerted
+        </p>
+    </section>
+
 </main>
 
 <footer>
