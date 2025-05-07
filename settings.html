@@ -1,10 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <title>Watch View</title>
+    <link rel="stylesheet" href="styles.css" />
+
+
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .watch-container {
+            width: 300px;
+            height: 400px;
+            background-color: #222;
+            border-radius: 30px;
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            justify-content: center;
+        }
+
+        .watch-title {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: #ffcc80;
+        }
+
+        .watch-link {
+            display: block;
+            margin: 1rem 0;
+            padding: 0.75rem 1.25rem;
+            background-color: #ff7f50;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            width: 100%;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .watch-link:hover {
+            background-color: #ff9966;
+        }
+
+        footer {
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
+<div class="watch-container">
+    <div class="watch-title">Watch Dashboard</div>
+
+    <a href="settings.html" class="watch-link">Settings</a>
+
+
+    <div class="mini-likelihood">
+        <h3>🔍 Likelihood Estimate</h3>
+        <p>Fatigue Risk: <strong>Low</strong></p>
+        <p>Alertness Score: <strong>85%</strong></p>
+    </div>
+    <div class="data-graphs">
+        <div class="mini-graph">
+            <canvas id="pvwWatchChart" width="200" height="100"></canvas>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const watchCtx = document.getElementById('pvwWatchChart').getContext('2d');
+        new Chart(watchCtx, {
+            type: 'line',
+            data: {
+                labels: ['00', '01', '02', '03', '04', '05'],
+                datasets: [{
+                    label: 'PVW',
+                    data: [12, 15, 14, 18, 17, 20],
+                    borderColor: '#ffab91',
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    fill: false,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                plugins: { legend: { display: false } },
+                responsive: true,
+                scales: {
+                    x: { display: false },
+                    y: { display: false }
+                }
+            }
+        });
+    </script>
+
+
+
+
+
+    <a href="index.html" class="watch-link">🏠 Home</a>
+</div>
+
+
+
+
+
+<footer>
+    <p>&copy; 2025 Your Website</p>
+</footer>
 
 </body>
 </html>
