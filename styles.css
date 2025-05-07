@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #eaa737;
+    background-color: #ffe5b4; /* peach background */
     color: #333;
     padding-top: 70px;
     min-height: 100vh;
@@ -64,8 +64,8 @@ main {
 
 /* === Footer === */
 footer {
-    background-color: #fff3e0;
-    color: #5c4033;
+    background-color: #fff0d9; /* lighter peach */
+    color: #4a3b2a;
     text-align: center;
     padding: 1rem 0;
     font-size: 0.95rem;
