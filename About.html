@@ -71,6 +71,54 @@
             x &gt; 12 m/s - the disease is actively impacting the blood vessels OR there is an error with calculations (e.g., patient is exercising) – patient must be alerted
         </p>
     </section>
+    <section>
+        <h2>Data Processing Options</h2>
+
+        <p>When accessing data, we faced three processing options, each with its own set of challenges:</p>
+
+        <h3>1. On-device processing</h3>
+        <p>
+            This approach is limited for heavy computations, such as PWV extraction, as we want the app to be lightweight and suitable for background use.
+            Additionally, training our AI with user data (given permissions) is tricky with device-only processing.
+        </p>
+
+        <h3>2. Server-side processing</h3>
+        <p>
+            This solution helps with training our AI models more easily, but servers are expensive and difficult to justify with a small consumer base.
+        </p>
+
+        <h3>3. Third-party cloud software</h3>
+        <p>
+            This option offers short-term cost savings and allows AI training on cloud platforms.
+            However, it raises concerns about data security and the trustworthiness of third-party companies.
+        </p>
+
+        <h2>Our Proposed Solution</h2>
+
+        <p>
+            We propose installing a lightweight AI model directly on users’ smartphones. This hybrid approach mitigates all the challenges encountered with previous methods.
+        </p>
+
+        <h3>Smartphone-based Feature Extraction</h3>
+        <p>
+            The app uses smartphones to extract basic features such as key points from ECG and PPG data. This greatly reduces the data size and avoids uploading large time-series data or raw sensor streams.
+        </p>
+
+        <h3>Personalised AI Training</h3>
+        <p>
+            A lightweight AI model is trained directly on the user's phone using their data (when the phone is idle or charging). Only the updated model weights are sent back to the central server — ensuring efficiency and privacy.
+        </p>
+
+        <h3>Graphical Flares</h3>
+        <p>
+            Extracted key points can be used to graph potential flare events. With continual local training, the AI becomes more accurate in predicting these flares over time.
+        </p>
+
+        <p>
+            This method draws inspiration from how Google’s Gboard and Apple’s Siri train predictive models on-device. Our solution reflects this approach as the primary way to process patient data securely and efficiently.
+        </p>
+    </section>
+
 
 </main>
 
