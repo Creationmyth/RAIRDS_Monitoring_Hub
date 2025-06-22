@@ -51,6 +51,41 @@
             });
         });
     </script>
+    <script>
+        const canvas = document.getElementById('watchGraph');
+        const ctx = canvas.getContext('2d');
 
+        // Sample flat data with some spikes
+        const dataPoints = Array.from({ length: 50 }, (_, i) =>
+            i % 13 === 0 ? Math.random() * 40 + 30 : Math.random() * 10 + 10
+        );
+
+        ctx.strokeStyle = '#ffcc80';
+        ctx.beginPath();
+        dataPoints.forEach((y, i) => {
+            const x = (i / dataPoints.length) * canvas.width;
+            const yVal = canvas.height - y;
+            i === 0 ? ctx.moveTo(x, yVal) : ctx.lineTo(x, yVal);
+        });
+        ctx.stroke();
+    </script>
+
+<body>
+<div class="watch-frame">
+    <div class="watch-screen">
+        <div class="watch-header">
+            <span class="watch-time">17:34</span>
+            <span class="watch-battery">🔋 27%</span>
+        </div>
+
+        <canvas id="watchGraph" width="200" height="80"></canvas>
+
+        <div class="watch-footer">
+            <button class="settings-btn">⚙️</button>
+        </div>
+    </div>
+</div>
+
+</body>
 
 </html>
