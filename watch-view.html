@@ -247,6 +247,52 @@
         </div>
 
 
+        <div class="smartwatch-container">
+            <div class="watch-header">
+                <button class="settings-btn">⚙️</button>
+            </div>
+
+            <div class="graph-container">
+                <canvas id="pwvGraph"></canvas>
+            </div>
+        </div>
+<script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const ctx = document.getElementById("pwvGraph").getContext("2d");
+
+                // Simulated flat data with occasional spikes
+                const data = Array.from({length: 30}, (_, i) => {
+                    return i % 9 === 0 ? Math.random() * 4 + 5 : Math.random() * 0.5 + 2.5;
+                });
+
+                new Chart(ctx, {
+                    type: "line",
+                    data: {
+                        labels: Array.from({length: data.length}, (_, i) => i + 1),
+                        datasets: [{
+                            label: "PWV",
+                            data: data,
+                            borderColor: "#ff6347",
+                            backgroundColor: "transparent",
+                            borderWidth: 2,
+                            tension: 0.4,
+                            pointRadius: 0
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: { display: false },
+                            y: { display: false }
+                        },
+                        plugins: {
+                            legend: { display: false }
+                        }
+                    }
+                });
+            });
+        </script>
 
 
 
