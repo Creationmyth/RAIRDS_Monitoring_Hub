@@ -112,7 +112,7 @@
             const height = canvas.height;
             const padding = 30;
 
-            // Simulated data with spikes
+            // Simulated data with occasional spikes
             const dataPoints = Array.from({ length: 50 }, (_, i) =>
                 i % 13 === 0 ? Math.random() * 40 + 30 : Math.random() * 10 + 10
             );
@@ -129,20 +129,22 @@
             ctx.lineTo(width, height - padding);
             ctx.stroke();
 
-            // === Y-Axis Labels ===
+            // === Axis Titles Only (No Ticks) ===
             ctx.fillStyle = "#fff";
-            ctx.font = "10px Arial";
-            ctx.textAlign = "right";
-            ctx.fillText("Flare-Up %", padding - 5, 10);
-            ctx.fillText("50", padding - 5, 10);
-            ctx.fillText("30", padding - 5, height / 2);
-            ctx.fillText("10", padding - 5, height - padding - 2);
-
-            // === X-Axis Labels ===
+            ctx.font = "11px Arial";
             ctx.textAlign = "center";
-            ctx.fillText("Time", width - 10, height - 5);
 
-            // === Draw Graph ===
+            // Y-axis title (rotated)
+            ctx.save();
+            ctx.translate(12, height / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText("Flare-Up Probability", 0, 0);
+            ctx.restore();
+
+            // X-axis title
+            ctx.fillText("Time", width / 2, height - 5);
+
+            // === Draw Graph Line ===
             ctx.beginPath();
             ctx.strokeStyle = "#ffcc80";
             ctx.lineWidth = 2;
@@ -157,6 +159,7 @@
             ctx.stroke();
         }
     </script>
+
 
 
 
