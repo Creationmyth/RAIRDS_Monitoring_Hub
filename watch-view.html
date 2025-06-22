@@ -1,90 +1,121 @@
 <!DOCTYPE html>
 <!--suppress ALL -->
 <html lang="en">
-<head>
+<body>
     <meta charset="UTF-8" />
     <title>Watch View</title>
     <link rel="stylesheet" href="styles.css" />
+    <style>
+        .watch-frame {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #dbe9f4;
+        }
 
-    <div class="smartwatch-container">
-        <div class="watch-header">
-            <button class="settings-btn">⚙️</button>
-        </div>
+        .watch-screen {
+            background-color: #000;
+            color: white;
+            width: 240px;
+            height: 320px;
+            border-radius: 30px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        }
 
-        <div class="graph-container">
-            <canvas id="pwvGraph"></canvas>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const ctx = document.getElementById("pwvGraph").getContext("2d");
+        .watch-header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
 
-            // Simulated flat data with occasional spikes
-            const data = Array.from({ length: 30 }, (_, i) => {
-                return i % 9 === 0 ? Math.random() * 4 + 5 : Math.random() * 0.5 + 2.5;
-            });
+        .watch-time {
+            font-size: 2rem;
+        }
 
-            new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: Array.from({ length: data.length }, (_, i) => i + 1),
-                    datasets: [{
-                        label: "PWV",
-                        data: data,
-                        borderColor: "#ff6347",
-                        backgroundColor: "transparent",
-                        borderWidth: 2,
-                        tension: 0.4,
-                        pointRadius: 0
-                    }]
-                },
-                options: {
-                    scales: {
-                        x: { display: false },
-                        y: { display: false }
-                    },
-                    plugins: {
-                        legend: { display: false }
-                    }
-                }
-            });
-        });
-    </script>
+        .graph-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        canvas {
+            background-color: #111;
+            border-radius: 8px;
+        }
+
+        .watch-footer {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .settings-btn {
+            background-color: #333;
+            border: none;
+            color: white;
+            border-radius: 50%;
+            padding: 0.6rem;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .settings-btn:hover {
+            background-color: #555;
+        }
+
+    </style>
+
     <script>
         const canvas = document.getElementById('watchGraph');
         const ctx = canvas.getContext('2d');
 
-        // Sample flat data with some spikes
         const dataPoints = Array.from({ length: 50 }, (_, i) =>
             i % 13 === 0 ? Math.random() * 40 + 30 : Math.random() * 10 + 10
         );
 
         ctx.strokeStyle = '#ffcc80';
+        ctx.lineWidth = 2;
         ctx.beginPath();
+
         dataPoints.forEach((y, i) => {
             const x = (i / dataPoints.length) * canvas.width;
             const yVal = canvas.height - y;
             i === 0 ? ctx.moveTo(x, yVal) : ctx.lineTo(x, yVal);
         });
+
         ctx.stroke();
     </script>
 
-<body>
-<div class="watch-frame">
-    <div class="watch-screen">
-        <div class="watch-header">
-            <span class="watch-time">17:34</span>
-            <span class="watch-battery">🔋 27%</span>
-        </div>
 
-        <canvas id="watchGraph" width="200" height="80"></canvas>
 
-        <div class="watch-footer">
-            <button class="settings-btn">⚙️</button>
+    <div class="watch-frame">
+        <div class="watch-screen">
+            <div class="watch-header">
+                <span class="watch-time">17:34</span>
+                <span class="watch-battery">🔋 27%</span>
+            </div>
+
+            <div class="graph-container">
+                <canvas id="watchGraph" width="200" height="80"></canvas>
+            </div>
+
+            <div class="watch-footer">
+                <button class="settings-btn">⚙️</button>
+            </div>
         </div>
     </div>
-</div>
+
 
 </body>
 
