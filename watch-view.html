@@ -6,304 +6,51 @@
     <title>Watch View</title>
     <link rel="stylesheet" href="styles.css" />
 
-
-    <style>
-        body {
-            background-color: #1a1a1a;
-            color: white;
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .watch-container {
-            width: 300px;
-            height: 400px;
-            background-color: #222;
-            border-radius: 30px;
-            box-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
-            margin: 2rem auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1.5rem;
-            justify-content: center;
-        }
-
-        .watch-title {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            color: #ffcc80;
-        }
-
-        .watch-link {
-            display: block;
-            margin: 1rem 0;
-            padding: 0.75rem 1.25rem;
-            background-color: #ff7f50;
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            width: 100%;
-            text-align: center;
-            transition: background 0.3s ease;
-        }
-
-        .watch-link:hover {
-            background-color: #ff9966;
-        }
-
-        footer {
-            text-align: center;
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-top: 2rem;
-        }
-    </style>
-</head>
-<body>
-<div class="watch-container">
-    <div class="watch-title">Watch Dashboard</div>
-
-    <a href="settings.html" class="watch-link">Settings</a>
-
-
-    <div class="mini-likelihood">
-        <h3>🔍 Likelihood Estimate</h3>
-        <p>Fatigue Risk: <strong>Low</strong></p>
-        <p>Alertness Score: <strong>85%</strong></p>
-    </div>
-    <div class="data-graphs">
-        <div class="mini-graph">
-            <canvas id="pvwWatchChart" width="200" height="100"></canvas>
+    <div class="smartwatch-container">
+        <div class="watch-header">
+            <button class="settings-btn">⚙️</button>
         </div>
 
+        <div class="graph-container">
+            <canvas id="pwvGraph"></canvas>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        const watchCtx = document.getElementById('pvwWatchChart').getContext('2d');
-        new Chart(watchCtx, {
-            type: 'line',
-            data: {
-                labels: ['00', '01', '02', '03', '04', '05'],
-                datasets: [{
-                    label: 'PVW',
-                    data: [12, 15, 14, 18, 17, 20],
-                    borderColor: '#ffab91',
-                    borderWidth: 2,
-                    pointRadius: 0,
-                    fill: false,
-                    tension: 0.3
-                }]
-            },
-            options: {
-                plugins: { legend: { display: false } },
-                responsive: true,
-                scales: {
-                    x: { display: false },
-                    y: { display: false }
+        document.addEventListener("DOMContentLoaded", () => {
+            const ctx = document.getElementById("pwvGraph").getContext("2d");
+
+            // Simulated flat data with occasional spikes
+            const data = Array.from({ length: 30 }, (_, i) => {
+                return i % 9 === 0 ? Math.random() * 4 + 5 : Math.random() * 0.5 + 2.5;
+            });
+
+            new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: Array.from({ length: data.length }, (_, i) => i + 1),
+                    datasets: [{
+                        label: "PWV",
+                        data: data,
+                        borderColor: "#ff6347",
+                        backgroundColor: "transparent",
+                        borderWidth: 2,
+                        tension: 0.4,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: { display: false },
+                        y: { display: false }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
                 }
-            }
+            });
         });
     </script>
 
 
-    
-
-
-    <a href="index.html" class="watch-link">🏠 Home</a>
-</div>
-
-
-
-
-
-<footer>
-    <p>&copy; 20<!DOCTYPE html>
-        <head>
-            <meta charset="UTF-8" />
-            <title>Watch View</title>
-            <link rel="stylesheet" href="styles.css" />
-
-
-            <style>
-                body {
-                    background-color: #1a1a1a;
-                    color: white;
-                    font-family: sans-serif;
-                    margin: 0;
-                    padding: 0;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-                .watch-container {
-                    width: 300px;
-                    height: 400px;
-                    background-color: #222;
-                    border-radius: 30px;
-                    box-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
-                    margin: 2rem auto;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    padding: 1.5rem;
-                    justify-content: center;
-                }
-
-                .watch-title {
-                    font-size: 1.4rem;
-                    margin-bottom: 2rem;
-                    color: #ffcc80;
-                }
-
-                .watch-link {
-                    display: block;
-                    margin: 1rem 0;
-                    padding: 0.75rem 1.25rem;
-                    background-color: #ff7f50;
-                    color: white;
-                    text-decoration: none;
-                    border-radius: 12px;
-                    font-size: 1.1rem;
-                    width: 100%;
-                    text-align: center;
-                    transition: background 0.3s ease;
-                }
-
-                .watch-link:hover {
-                    background-color: #ff9966;
-                }
-
-                footer {
-                    text-align: center;
-                    color: #aaa;
-                    font-size: 0.9rem;
-                    margin-top: 2rem;
-                }
-            </style>
-        </head>
-        <body>
-        <div class="watch-container">
-            <div class="watch-title">Watch Dashboard</div>
-
-            <a href="settings.html" class="watch-link">Settings</a>
-
-
-            <div class="mini-likelihood">
-            </div>
-            <div class="data-graphs">
-                <div class="mini-graph">
-                    <canvas id="pvwWatchChart" width="200" height="100"></canvas>
-                </div>
-
-            </div>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <script>
-                const watchCtx = document.getElementById('pvwWatchChart').getContext('2d');
-                new Chart(watchCtx, {
-                    type: 'line',
-                    data: {
-                        labels: ['00', '01', '02', '03', '04', '05'],
-                        datasets: [{
-                            label: 'PVW',
-                            data: [12, 15, 14, 18, 17, 20],
-                            borderColor: '#ffab91',
-                            borderWidth: 2,
-                            pointRadius: 0,
-                            fill: false,
-                            tension: 0.3
-                        }]
-                    },
-                    options: {
-                        plugins: { legend: { display: false } },
-                        responsive: true,
-                        scales: {
-                            x: { display: false },
-                            y: { display: false }
-                        }
-                    }
-                });
-            </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <a href="index.html" class="watch-link">🏠 Home</a>
-        </div>
-
-
-        <div class="smartwatch-container">
-            <div class="watch-header">
-                <button class="settings-btn">⚙️</button>
-            </div>
-
-            <div class="graph-container">
-                <canvas id="pwvGraph"></canvas>
-            </div>
-        </div>
-<script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                const ctx = document.getElementById("pwvGraph").getContext("2d");
-
-                // Simulated flat data with occasional spikes
-                const data = Array.from({length: 30}, (_, i) => {
-                    return i % 9 === 0 ? Math.random() * 4 + 5 : Math.random() * 0.5 + 2.5;
-                });
-
-                new Chart(ctx, {
-                    type: "line",
-                    data: {
-                        labels: Array.from({length: data.length}, (_, i) => i + 1),
-                        datasets: [{
-                            label: "PWV",
-                            data: data,
-                            borderColor: "#ff6347",
-                            backgroundColor: "transparent",
-                            borderWidth: 2,
-                            tension: 0.4,
-                            pointRadius: 0
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            x: { display: false },
-                            y: { display: false }
-                        },
-                        plugins: {
-                            legend: { display: false }
-                        }
-                    }
-                });
-            });
-        </script>
-
-
-
-        <footer>
-            <p>&copy; 2025 Your Website (Please bear in mind this is just a proposed simulation and not fully fleshed out yet</p>
-        </footer>
-
-
-
-</body>
-    </p>
-</footer>
-</body>
 </html>
