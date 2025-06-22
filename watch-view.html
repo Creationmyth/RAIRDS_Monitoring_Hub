@@ -6,12 +6,17 @@
     <title>Watch View</title>
     <link rel="stylesheet" href="styles.css" />
     <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #dbe9f4;
+        }
+
         .watch-frame {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #dbe9f4;
         }
 
         .watch-screen {
@@ -31,20 +36,25 @@
         .watch-header {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             width: 100%;
             font-size: 1.2rem;
             font-weight: bold;
-            margin-bottom: 1rem;
         }
 
         .watch-time {
             font-size: 2rem;
         }
 
+        .watch-battery {
+            font-size: 1rem;
+        }
+
         .graph-container {
             width: 100%;
             display: flex;
             justify-content: center;
+            align-items: center;
             margin: 1rem 0;
         }
 
@@ -76,29 +86,6 @@
 
     </style>
 
-    <script>
-        const canvas = document.getElementById('watchGraph');
-        const ctx = canvas.getContext('2d');
-
-        const dataPoints = Array.from({ length: 50 }, (_, i) =>
-            i % 13 === 0 ? Math.random() * 40 + 30 : Math.random() * 10 + 10
-        );
-
-        ctx.strokeStyle = '#ffcc80';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-
-        dataPoints.forEach((y, i) => {
-            const x = (i / dataPoints.length) * canvas.width;
-            const yVal = canvas.height - y;
-            i === 0 ? ctx.moveTo(x, yVal) : ctx.lineTo(x, yVal);
-        });
-
-        ctx.stroke();
-    </script>
-
-
-
     <div class="watch-frame">
         <div class="watch-screen">
             <div class="watch-header">
@@ -115,6 +102,34 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const canvas = document.getElementById('watchGraph');
+        const ctx = canvas.getContext('2d');
+
+        if (ctx) {
+            const dataPoints = Array.from({ length: 50 }, (_, i) =>
+                i % 13 === 0 ? Math.random() * 40 + 30 : Math.random() * 10 + 10
+            );
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.strokeStyle = '#ffcc80';
+            ctx.lineWidth = 2;
+
+            dataPoints.forEach((y, i) => {
+                const x = (i / dataPoints.length) * canvas.width;
+                const yVal = canvas.height - y;
+                if (i === 0) ctx.moveTo(x, yVal);
+                else ctx.lineTo(x, yVal);
+            });
+
+            ctx.stroke();
+        } else {
+            console.error('Canvas context not found.');
+        }
+    </script>
+
 
 
 </body>
