@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: lightcyan; /* soft peach background */
+    background-color: #f8efef; /* light background */
     color: #333;
     padding-top: 70px;
     min-height: 100vh;
@@ -96,7 +96,7 @@ footer {
     margin-top: 1.5rem;
     padding: 0.75rem;
     width: 100%;
-    background-color: #ff9b70;
+    background-color: darkblue;
     border: none;
     color: white;
     font-weight: bold;
@@ -107,7 +107,7 @@ footer {
 }
 
 .login-form button:hover {
-    background-color: #ffc3a0;
+    background-color: lightcyan;
 }
 
 /* === Dashboard Cards === */
@@ -140,7 +140,7 @@ footer {
     display: inline-block;
     margin-top: 2rem;
     padding: 0.75rem 1.5rem;
-    background-color: #ffbfa0;
+    background-color: darkblue;
     color: #333;
     font-weight: bold;
     text-decoration: none;
