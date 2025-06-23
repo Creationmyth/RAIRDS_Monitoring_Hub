@@ -8,6 +8,7 @@
   <style>
     @media screen and (max-width: 600px) {
       .navbar {
+        display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
@@ -17,35 +18,34 @@
 
       .nav-links {
         display: flex;
-        flex-direction: row; /* keep links in a row */
+        flex-direction: row; /* Forces horizontal */
+        justify-content: flex-start;
+        align-items: center;
         flex-wrap: wrap;
         gap: 0.5rem;
-        padding: 0;
-        justify-content: flex-start;
+        width: auto;
       }
-
 
       .nav-links li {
         margin: 0;
       }
 
       .nav-links li a {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         padding: 0.3rem 0.5rem;
       }
 
       .login-button {
-        margin-left: 0;
-        width: 100%;
-        text-align: right;
+        margin-left: auto;
       }
 
       .user-greeting {
         font-size: 0.8rem;
-        margin-top: 0.3rem;
         text-align: center;
+        margin-top: 0.5rem;
       }
     }
+
 
     html, body {
       height: 100%;
@@ -67,9 +67,17 @@
       font-size: 0.9rem;
       margin-top: auto;
     }
-    .nav-links {
-      padding: 0.5rem 1rem;
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
 
     .nav-links li a {
       font-size: 1rem;
